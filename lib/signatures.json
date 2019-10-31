@@ -1,0 +1,32 @@
+{
+  "signatures": [
+    "bot",
+    "check",
+    "cloud",
+    "crawler",
+    "download",
+    "monitor",
+    "preview",
+    "scan",
+    "spider",
+
+    "google",
+    "qwantify",
+    "yahoo",
+
+    "facebookexternalhit",
+    "flipboard",
+    "tumblr",
+    "vkshare",
+    "whatsapp",
+
+    "curl",
+    "perl",
+    "python",
+    "wget",
+    "siege",
+
+    "heritrix",
+    "ia_archiver"   
+  ]
+}
