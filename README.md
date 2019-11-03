@@ -1,5 +1,4 @@
-# WAF-JS
-### Simple WAF to integrate with Node.js web systems 
+# WAF-JS <br> ### Simple WAF to integrate with Node.js web systems 
 ---
 
 [![Build Status](https://travis-ci.org/undertuga/WAF-JS.svg?branch=master)](https://travis-ci.org/undertuga/WAF-JS)
