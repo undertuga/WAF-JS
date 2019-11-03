@@ -36,7 +36,7 @@ Removes a signature from the list.
 - ***reqCheck()***
 Checks the request, analysing the HTTP request method and content type, and matching it with the given config (allowed methods & content types).
 
--- ***wafChecks()***
+- ***wafChecks()***
 Performs both checks (bot and requests) returning a boolean value as response, according with the validity of the request components.
-<<<<<>>>>>
+
 ---
