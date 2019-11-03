@@ -19,6 +19,6 @@ It can be configurable by passing the allowed / desirable HTTP Methods and Conte
 
 #### Instalation
 In order to install WAF-JS package, simply run: <br>
-``npm install wafjs --save``
+``*npm install wafjs --save*``
 
 ---
