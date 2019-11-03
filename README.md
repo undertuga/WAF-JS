@@ -40,3 +40,7 @@ Checks the request, analysing the HTTP request method and content type, and matc
 Performs both checks (bot and requests) returning a boolean value as response, according with the validity of the request components.
 
 ---
+
+*** This documentation is not complete and is currently under development***
+
+---
