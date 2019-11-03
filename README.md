@@ -30,7 +30,7 @@ Based on pre-defined rules / signatures (with the possibility of extending them)
 - ***extendBotSigs({signatures})*** 
 Allows the extensions of pre-defined bot / crawlers, spiders, etc... signatures. Receives an array of signatures to be added to the pre-defined ones.
 
-- ***removeBotSig({signatures})***
+- ***removeBotSig({signature})***
 Removes a signature from the list.
 
 - ***reqCheck()***
@@ -38,5 +38,5 @@ Checks the request, analysing the HTTP request method and content type, and matc
 
 -- ***wafChecks()***
 Performs both checks (bot and requests) returning a boolean value as response, according with the validity of the request components.
-<<<<>>>>
+<<<<<>>>>>
 ---
