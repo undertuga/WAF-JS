@@ -2,11 +2,11 @@
   "name": "wafjs",
   "version": "1.0.0",
   "description": "Simple WAF to integrate with Node.js web systems",
-  "main": "waf.js",
+  "main": "./lib/waf.js",
   "scripts": {
-    "lint": "eslint ",
+    "lint": "./node_modules/eslint/bin/eslint.js lib/*.js test/*.js",
     "start": "npm start",
-    "test": "npm test"
+    "test": "./node_modules/.bin/mocha"
   },
   "homepage": "https://github.com/undertuga/WAF-JS",
   "repository": {
@@ -16,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/undertuga/WAF-JS/issues"
   },
+  "readmeFilename": "README.md",
   "keywords": [
     "waf",
     "nodejs",
