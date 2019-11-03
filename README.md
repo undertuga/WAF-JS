@@ -7,3 +7,7 @@
 ![node](https://img.shields.io/node/v/wafjs)
 
 ---
+
+#### Instalation
+In order to install WAF-JS package, simply run:
+``npm install wafjs --save``
