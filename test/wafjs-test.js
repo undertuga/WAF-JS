@@ -18,6 +18,9 @@ const forbidenReqHeaders = {
   'content-type': 'application/zip'
 }
 
+// ESLINT RULE
+/*global it*/
+
 /* BOT CHECK TESTS */
 it('Bot Check Test - Allowed BOT', (done) => {
   let _WAFJS = new WAFJS(baseConfig, 'GET', allowedReqHeaders)
