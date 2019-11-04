@@ -41,6 +41,11 @@ Performs both checks (bot and requests) returning a boolean value as response, a
 
 ---
 
+### Configuration
+
+
+---
+
 *** This documentation is not complete and is currently under development***
 
 ---
