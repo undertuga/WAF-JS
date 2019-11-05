@@ -17,7 +17,7 @@ node_js:
     
 if: os = windows
 node_js:
-  - node
+  - latest
   - 'lts/*'
 
 after_success: npm run coverage
