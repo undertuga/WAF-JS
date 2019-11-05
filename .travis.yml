@@ -4,6 +4,6 @@ os:
   - osx
   - windows
 node_js:
-- node
+- latest
 - 'lts/*'
 after_success: npm run coverage
