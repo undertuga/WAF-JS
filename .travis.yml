@@ -3,14 +3,12 @@ os:
   - osx
   - windows
 
-if: os = linux OR osx
-language: node_js
-node_js:
-  - node
-  - 'lts/*'
-
 if: os = windows
-language: node_js
+  language: node_js
+  node_js:
+    - latest
+    - 'lts/*'
+
 node_js:
   - latest
   - 'lts/*'
