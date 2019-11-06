@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/undertuga/WAF-JS/badge.svg?branch=master)](https://coveralls.io/github/undertuga/WAF-JS?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/undertuga/WAF-JS/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/wafjs)](https://www.npmjs.com/package/wafjs)
-![node](https://img.shields.io/node/v/wafjs)
+[![node](https://img.shields.io/node/v/wafjs)](https://nodejs.org/en/download/)
 [![Gitter](https://badges.gitter.im/WAF-JS/community.svg)](https://gitter.im/WAF-JS/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ---
