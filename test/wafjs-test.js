@@ -23,15 +23,15 @@ const forbidenReqHeaders = {
 
 /* BOT CHECK TESTS */
 it('Bot Check Test - Allowed BOT', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'GET', allowedReqHeaders)
-  let res = _WAFJS.isBotCheck()
+  let _WAFJS = new WAFJS(baseConfig)
+  let res = _WAFJS.isBotCheck(allowedReqHeaders['user-agent'])
   expect(res).to.be.equal(false)
   done()
 })
 
 it('Bot Check Test - Forbiden BOT', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'GET', forbidenReqHeaders)
-  let res = _WAFJS.isBotCheck()
+  let _WAFJS = new WAFJS(baseConfig)
+  let res = _WAFJS.isBotCheck(forbidenReqHeaders['user-agent'])
   expect(res).to.be.equal(true)
   done()
 })
@@ -41,7 +41,7 @@ it('Bot Check Test - Forbiden BOT', (done) => {
 
 /* EXTEND BOT SIGS CHECK TEST */
 it('Extend Bot Signatures Test', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'GET', allowedReqHeaders)
+  let _WAFJS = new WAFJS(baseConfig)
   _WAFJS.extendBotSigs(['TESTBOTSIG'])
   let sigIndex = _WAFJS.botSigs.indexOf('TESTBOTSIG')
   expect(sigIndex).to.be.gte(0)
@@ -53,7 +53,7 @@ it('Extend Bot Signatures Test', (done) => {
 
 /* REMOVE BOT SIG CHECK TEST */
 it('Remove Bot Signature Test', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'GET', allowedReqHeaders)
+  let _WAFJS = new WAFJS(baseConfig)
   _WAFJS.removeBotSig('siege')
   let sigIndex = _WAFJS.botSigs.indexOf('siege')
   expect(sigIndex).to.be.lt(0)
@@ -64,36 +64,36 @@ it('Remove Bot Signature Test', (done) => {
 
 /* REQUEST CHECK TESTS */
 it('Request Check Test (Valid Method & Valid Content Type)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'GET', allowedReqHeaders)
-  let reqStatus = _WAFJS.reqCheck()
+  let _WAFJS = new WAFJS(baseConfig)
+  let reqStatus = _WAFJS.reqCheck('GET', allowedReqHeaders['content-type'])
   expect(reqStatus).to.be.equal(true)
   done()
 })
 
 it('Request Check Test (Invalid Method & Valid Content Type)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'PUT', allowedReqHeaders)
-  let reqStatus = _WAFJS.reqCheck()
+  let _WAFJS = new WAFJS(baseConfig)
+  let reqStatus = _WAFJS.reqCheck('PUT', allowedReqHeaders['content-type'])
   expect(reqStatus).to.be.equal(false)
   done()
 })
 
 it('Request Check Test (Valid Method & Invalid Content Type)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'POST', forbidenReqHeaders)
-  let reqStatus = _WAFJS.reqCheck()
+  let _WAFJS = new WAFJS(baseConfig)
+  let reqStatus = _WAFJS.reqCheck('POST', forbidenReqHeaders['content-type'])
   expect(reqStatus).to.be.equal(false)
   done()
 })
 
 it('Request Check Test (Invalid Method & Invalid Content Type)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'OPTIONS', forbidenReqHeaders)
-  let reqStatus = _WAFJS.reqCheck()
+  let _WAFJS = new WAFJS(baseConfig)
+  let reqStatus = _WAFJS.reqCheck('OPTIONS', forbidenReqHeaders['content-type'])
   expect(reqStatus).to.be.equal(false)
   done()
 })
 
 it('Request Check Test (Empty Method & Empty Headers)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, '', '')
-  let reqStatus = _WAFJS.reqCheck()
+  let _WAFJS = new WAFJS(baseConfig)
+  let reqStatus = _WAFJS.reqCheck('', '')
   expect(reqStatus).to.be.equal(false)
   done()
 })
@@ -103,29 +103,29 @@ it('Request Check Test (Empty Method & Empty Headers)', (done) => {
 
 /* WAF CHECKS TESTS */
 it('WAF Checks Aggregator Test (Not bot & Allowed Method & Valid Headers)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'PATCH', allowedReqHeaders)
-  let wafCheckStatus = _WAFJS.wafChecks()
+  let _WAFJS = new WAFJS(baseConfig)
+  let wafCheckStatus = _WAFJS.wafChecks(allowedReqHeaders['user-agent'], 'PATCH', allowedReqHeaders['content-type'])
   expect(wafCheckStatus).to.be.equal(true)
   done()
 })
 
 it('WAF Checks Aggregator Test (Not bot & Invalid Method & Valid Headers)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'PUT', allowedReqHeaders)
-  let wafCheckStatus = _WAFJS.wafChecks()
+  let _WAFJS = new WAFJS(baseConfig)
+  let wafCheckStatus = _WAFJS.wafChecks(allowedReqHeaders['user-agent'], 'PUT', allowedReqHeaders['content-type'])
   expect(wafCheckStatus).to.be.equal(false)
   done()
 })
 
 it('WAF Checks Aggregator Test (Is bot & Invalid Method & Invalid Headers)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'PUT', forbidenReqHeaders)
-  let wafCheckStatus = _WAFJS.wafChecks()
+  let _WAFJS = new WAFJS(baseConfig)
+  let wafCheckStatus = _WAFJS.wafChecks(forbidenReqHeaders['user-agent'], 'PUT', forbidenReqHeaders['content-type'])
   expect(wafCheckStatus).to.be.equal(false)
   done()
 })
 
 it('WAF Checks Aggregator Test (Is bot & Valid Method & Invalid Headers)', (done) => {
-  let _WAFJS = new WAFJS(baseConfig, 'POST', forbidenReqHeaders)
-  let wafCheckStatus = _WAFJS.wafChecks()
+  let _WAFJS = new WAFJS(baseConfig)
+  let wafCheckStatus = _WAFJS.wafChecks(forbidenReqHeaders['user-agent'], 'POST', forbidenReqHeaders['content-type'])
   expect(wafCheckStatus).to.be.equal(false)
   done()
 })

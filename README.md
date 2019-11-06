@@ -58,7 +58,7 @@ const baseConfig = {
 
 ```
 
-2. The request HTTP method of the current / request to be checked
+2. The request HTTP method of the request to be checked
 3. HTTP request headers object, or a custom object containing the ***user-agent*** & ***content-type*** properties 
 
 The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated as follows:
@@ -66,7 +66,7 @@ The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated 
 // package requirement
 const { WAFJS } = require('wafjs') 
 
-// class instantiation
+// declaring new WAFJS class instance
 let _wafjs = new WAFJS(baseConfig, req.method, req.headers)
 
 // usage example | bot check
@@ -79,7 +79,14 @@ if(_wafjs.botCheck()){
 
 ---
 
-#### Express.JS example integration
-
+#### ExpressJS integration example
+***WAFJS*** can easily be integrated into ExpressJS as middleware, analysing the request before any further handling by the web system:
+```javascript
+  // WAF middleware validation & request id injection on every request
+  express.use(async (req, res, next) => {
+    if(_wafjs.reqCheck(req.method, req.headers))
+      res.status(403).send()
+  });
+```
 
 ---
