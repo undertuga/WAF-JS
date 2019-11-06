@@ -5,10 +5,7 @@ os:
   - osx
   - windows
   
-if: os = linux
-env: nodelatest=node
-
-if: os = osx
+if: os = linux OR osx
 env: nodelatest=node
 
 if: os = windows
