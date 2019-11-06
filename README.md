@@ -79,6 +79,7 @@ if(_wafjs.botCheck()){
 
 ---
 
-*** This documentation is not complete and is currently under development***
+#### Express.JS example integration
+
 
 ---
