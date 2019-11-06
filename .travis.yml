@@ -6,13 +6,13 @@ os:
   - windows
 
 if: os = linux OR osx
-  node_js:
-    - node
-    - 'lts/*'
+node_js:
+  - node
+  - 'lts/*'
 
 if: os = windows
-  node_js:
-    - latest
-    - 'lts/*'
+node_js:
+  - latest
+  - 'lts/*'
 
 after_success: npm run coverage
