@@ -6,18 +6,16 @@ os:
   - windows
   
 if: os = linux
-node_js:
-  - node
-  - 'lts/*'
-  
+env: nodelatest=node
+
 if: os = osx
-node_js:
-  - node
-  - 'lts/*'
-    
+env: nodelatest=node
+
 if: os = windows
+env: nodelatest=latest
+
 node_js:
-  - latest
-  - 'lts/*'
+- env(nodelatest)
+- 'lts/*'
 
 after_success: npm run coverage
