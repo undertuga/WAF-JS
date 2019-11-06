@@ -44,7 +44,7 @@ Performs both checks (bot and requests) returning a boolean value as response, a
 
 #### Configuration & Usage
 The following arguments are required to be passed to  ***WAFJS***
-1. Config object containing the ***allowedMethods*** & ***contenTypes** 
+1. Config object containing the ***allowedMethods*** & ***contenTypes***
 
 **example of base config:** 
 ```
