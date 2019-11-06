@@ -4,18 +4,15 @@ os:
   - linux
   - osx
   - windows
-  
-env:
-  - WIN_NODE_LATEST=latest
-  - POSIX_NODE_LATEST=node
 
-node_js:
-  if: os = linux OR osx
-  - env(POSIX_NODE_LATEST)
-  
-  if: os = windows
-  - env(WIN_NODE_LATEST)
-  
-  - 'lts/*'
+if: os = linux OR osx
+  node_js:
+    - node
+    - 'lts/*'
+
+if: os = windows
+  node_js:
+    - latest
+    - 'lts/*'
 
 after_success: npm run coverage
