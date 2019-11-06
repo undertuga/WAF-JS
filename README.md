@@ -99,7 +99,7 @@ if(_wafjs.wafChecks(req.headers['user-agent'], req.method, req.headers['content-
 
 ---
 
-#### ExpressJS integration example
+#### Express.JS (and other frameworks) integration example
 ***WAFJS*** can easily be integrated into ExpressJS as middleware, analysing the request before any further handling by the web system:
 ```javascript
   // WAF middleware validation & request id injection on every request
@@ -108,5 +108,7 @@ if(_wafjs.wafChecks(req.headers['user-agent'], req.method, req.headers['content-
       res.status(403).send()
   });
 ```
+
+***WAFJS*** may also be easily integrated in other frameworks (Loopback, etc..) using the same approach as described above.
 
 ---
