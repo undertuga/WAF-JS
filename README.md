@@ -47,7 +47,7 @@ The following arguments are required to be passed to  ***WAFJS***
 1. Config object containing the ***allowedMethods*** & ***contentTypes***
 
 **example of base config:** 
-```
+```javascript
 
 const baseConfig = {
   allowedMethods: ['GET', 'POST', 'PATCH', 'DELETE'], // allowed / desired HTTP methods
@@ -60,7 +60,7 @@ const baseConfig = {
 3. HTTP request headers object, containing the ***user-agent*** & ***content-type*** properties 
 
 The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated as follows:
-```
+```javascript
 // package requirement
 const { WAFJS } = require('wafjs) 
 
