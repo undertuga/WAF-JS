@@ -4,10 +4,10 @@ os:
   - windows
 
 if: os = windows
-  language: node_js
-  node_js:
-    - latest
-    - 'lts/*'
+language: node_js
+node_js:
+  - latest
+  - 'lts/*'
 
 node_js:
   - latest
