@@ -26,8 +26,8 @@ In order to install ***WAF-JS*** package, simply run: <br>
 ---
 
 #### Available Methods
-- ***botCheck()***
-Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. Returns a boolean value (if bot: ***true*** | not bot: ***false***)
+- ***botCheck(req.headers['user-agent'])***
+Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. Receives the ***user-agent***  as argument and returns a boolean value (if bot: ***true*** | not bot: ***false***)
 
 - ***extendBotSigs({signatures})*** 
 Allows the extensions of pre-defined bot / crawlers, spiders, etc... signatures. Receives an array of signatures to be added to the pre-defined ones.
@@ -35,19 +35,20 @@ Allows the extensions of pre-defined bot / crawlers, spiders, etc... signatures.
 - ***removeBotSig({signature})***
 Removes a signature from the list.
 
-- ***reqCheck()***
+- ***reqCheck(req.method, req.headers['content-type'])***
 Checks the request, analysing the HTTP request method and content type, and matching it with the given config (allowed methods & content types).
-Returns a boolean value (valid / allowed request: ***true*** | invalid / forbidden request: ***false***)
+Receives the request method and request headers ***content-type*** property and returns a boolean value (valid / allowed request: ***true*** | invalid / forbidden request: ***false***)
 
-- ***wafChecks()***
+- ***wafChecks(req.headers['user-agent'], req.method, req.headers['content-type'])***
 Performs both checks (bot and requests) returning a boolean value as response, according with the validity of the request components.
-(not a bot AND valid request: ***true*** | is bot OR invalid request: ***false***)
+Receives the request headers ***user-agent*** property, the request method and the request headers ***content-type*** property as parameters.
+Returns a boolean (not a bot AND valid request: ***true*** | is bot OR invalid request: ***false***)
 
 ---
 
 #### Configuration & Usage
 The following arguments are required to be passed to  ***WAFJS***
-1. Configuration object containing the ***allowedMethods*** & ***contentTypes***
+-  Configuration object containing the ***allowedMethods*** & ***contentTypes***
 
 **example of base config:** 
 ```javascript
@@ -59,19 +60,16 @@ const baseConfig = {
 
 ```
 
-2. The request HTTP method of the request to be checked
-3. HTTP request headers object, or a custom object containing the ***user-agent*** & ***content-type*** properties 
-
 The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated as follows:
 ```javascript
 // package requirement
 const { WAFJS } = require('wafjs') 
 
 // declaring new WAFJS class instance
-let _wafjs = new WAFJS(baseConfig, req.method, req.headers)
+let _wafjs = new WAFJS(baseConfig)
 
 // usage example | bot check
-if(_wafjs.botCheck()){
+if(_wafjs.isBotCheck(req.headers['user-agent'])){
   res.statusCode = 403
   res.end()
 }
@@ -85,7 +83,7 @@ if(_wafjs.botCheck()){
 ```javascript
   // WAF middleware validation & request id injection on every request
   express.use(async (req, res, next) => {
-    if(_wafjs.reqCheck(req.method, req.headers))
+    if(_wafjs.reqCheck(req.method, req.headers['content-type']))
       res.status(403).send()
   });
 ```
