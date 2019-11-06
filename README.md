@@ -57,7 +57,7 @@ const baseConfig = {
 ```
 
 2. The request HTTP method of the current / request to be checked
-3. HTTP request headers object, containing the ***user-agent*** & ***content-type*** properties 
+3. HTTP request headers object, or a custom object containing the ***user-agent*** & ***content-type*** properties 
 
 The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated as follows:
 ```javascript
@@ -65,7 +65,7 @@ The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated 
 const { WAFJS } = require('wafjs) 
 
 // class instantiation
-let _wafJS = new WAFJS()
+let _wafJS = new WAFJS(baseConfig, req.method, req.headers)
 
 ````
 
