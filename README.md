@@ -26,7 +26,7 @@ In order to install ***WAF-JS*** package, simply run: <br>
 ---
 
 #### Available Methods
-- ***botCheck(req.headers['user-agent'])***
+- ***isBotCheck(req.headers['user-agent'])***
 Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. Receives the ***user-agent***  as argument and returns a boolean value (if bot: ***true*** | not bot: ***false***)
 
 - ***extendBotSigs({signatures})*** 
