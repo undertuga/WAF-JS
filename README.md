@@ -40,13 +40,13 @@ Returns a boolean value (valid / allowed request: ***true*** | invalid / forbidd
 
 - ***wafChecks()***
 Performs both checks (bot and requests) returning a boolean value as response, according with the validity of the request components.
-(not a bot & valid request: ***true*** | is bot OR invalid request: ***false***)
+(not a bot AND valid request: ***true*** | is bot OR invalid request: ***false***)
 
 ---
 
 #### Configuration & Usage
 The following arguments are required to be passed to  ***WAFJS***
-1. Config object containing the ***allowedMethods*** & ***contentTypes***
+1. Configuration object containing the ***allowedMethods*** & ***contentTypes***
 
 **example of base config:** 
 ```javascript
@@ -64,10 +64,16 @@ const baseConfig = {
 The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated as follows:
 ```javascript
 // package requirement
-const { WAFJS } = require('wafjs) 
+const { WAFJS } = require('wafjs') 
 
 // class instantiation
 let _wafjs = new WAFJS(baseConfig, req.method, req.headers)
+
+// usage example | bot check
+if(_wafjs.botCheck()){
+  res.statusCode = 403
+  res.end()
+}
 
 ````
 
