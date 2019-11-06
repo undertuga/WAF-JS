@@ -42,8 +42,31 @@ Performs both checks (bot and requests) returning a boolean value as response, a
 
 ---
 
-### Configuration
+#### Configuration & Usage
+The following arguments are required to be passed to  ***WAFJS***
+1. Config object containing the ***allowedMethods*** & ***contenTypes** 
+**example of base config:** 
+````
 
+const baseConfig = {
+  allowedMethods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  contentTypes: ['application/json', 'multipart/form-data']
+}
+
+```
+
+2. The request HTTP method of the current / request to be checked
+3. HTTP request headers object, containing the ***user-agent*** & ***content-type*** properties 
+
+The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated as follows:
+```
+// package requirement
+const { WAFJS } = require('wafjs) 
+
+// class instantiation
+let _wafJS = new WAFJS()
+
+````
 
 ---
 
