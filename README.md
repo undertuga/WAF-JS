@@ -30,7 +30,7 @@ In order to install ***WAF-JS*** package, simply run: <br>
 Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. Receives the ***user-agent***  as argument and returns a boolean value (if bot: ***true*** | not bot: ***false***)
 
 - ***extendBotSigs({signatures})*** 
-Allows the extensions of pre-defined bot / crawlers, spiders, etc... signatures. Receives an array of signatures to be added to the pre-defined ones.
+Allows the extension of pre-defined bot / crawlers, spiders, etc... signatures. Receives an array of signatures to be added to the pre-defined ones.
 
 - ***removeBotSig({signature})***
 Removes a signature from the list.

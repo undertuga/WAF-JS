@@ -1,6 +1,6 @@
 {
   "name": "wafjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple WAF to integrate with Node.js web systems",
   "main": "lib/waf.js",
   "scripts": {
