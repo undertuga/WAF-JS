@@ -28,6 +28,8 @@ In order to install ***WAF-JS*** package, simply run: <br>
 - ***botCheck()***
 Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. 
 
+Returns a boolean value (if bot: ***true*** | not bot: ***false***)
+
 - ***extendBotSigs({signatures})*** 
 Allows the extensions of pre-defined bot / crawlers, spiders, etc... signatures. Receives an array of signatures to be added to the pre-defined ones.
 
@@ -65,7 +67,7 @@ The ***wafjs*** package exports a class (***WAFJS***), wich can be instantiated 
 const { WAFJS } = require('wafjs) 
 
 // class instantiation
-let _wafJS = new WAFJS(baseConfig, req.method, req.headers)
+let _wafjs = new WAFJS(baseConfig, req.method, req.headers)
 
 ````
 
