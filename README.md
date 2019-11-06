@@ -26,7 +26,7 @@ In order to install ***WAF-JS*** package, simply run: <br>
 
 #### Available Methods
 - ***botCheck()***
-Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. Returns a boolean value ``(if bot: ***true*** | not bot: ***false***)``
+Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. Returns a boolean value (if bot: ***true*** | not bot: ***false***)
 
 - ***extendBotSigs({signatures})*** 
 Allows the extensions of pre-defined bot / crawlers, spiders, etc... signatures. Receives an array of signatures to be added to the pre-defined ones.
@@ -36,11 +36,11 @@ Removes a signature from the list.
 
 - ***reqCheck()***
 Checks the request, analysing the HTTP request method and content type, and matching it with the given config (allowed methods & content types).
-Returns a boolean value ``(valid / allowed request: ***true*** | invalid / forbidden request: ***false***)``
+Returns a boolean value (valid / allowed request: ***true*** | invalid / forbidden request: ***false***)
 
 - ***wafChecks()***
 Performs both checks (bot and requests) returning a boolean value as response, according with the validity of the request components.
-``(not a bot & valid request: ***true*** | is bot OR invalid request: ***false***)``
+(not a bot & valid request: ***true*** | is bot OR invalid request: ***false***)
 
 ---
 
