@@ -6,6 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/undertuga/WAF-JS/blob/master/LICENSE)
 ![npm](https://img.shields.io/npm/v/wafjs)
 ![node](https://img.shields.io/node/v/wafjs)
+![Gitter](https://img.shields.io/gitter/room/undertuga/wafjs)
 
 ---
 
