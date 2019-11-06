@@ -26,7 +26,7 @@ In order to install ***WAF-JS*** package, simply run: <br>
 ---
 
 #### Available Methods
-- ***isBotCheck(req.headers['user-agent'])***
+- ***isBotCheck({'user-agent'})***
 Based on pre-defined rules / signatures (with the possibility of extending them), and taking the ``user-agent`` field from the request headers, it tries to check of the request is from a known bot / crawler / spider, etc.. Receives the ***user-agent***  as argument and returns a boolean value (if bot: ***true*** | not bot: ***false***)
 
 - ***extendBotSigs({signatures})*** 
@@ -35,11 +35,11 @@ Allows the extensions of pre-defined bot / crawlers, spiders, etc... signatures.
 - ***removeBotSig({signature})***
 Removes a signature from the list.
 
-- ***reqCheck(req.method, req.headers['content-type'])***
+- ***reqCheck({request method}, {content-type})***
 Checks the request, analysing the HTTP request method and content type, and matching it with the given config (allowed methods & content types).
 Receives the request method and request headers ***content-type*** property and returns a boolean value (valid / allowed request: ***true*** | invalid / forbidden request: ***false***)
 
-- ***wafChecks(req.headers['user-agent'], req.method, req.headers['content-type'])***
+- ***wafChecks({user-agent}, {request method}, {content-type})***
 Performs both checks (bot and requests) returning a boolean value as response, according with the validity of the request components.
 Receives the request headers ***user-agent*** property, the request method and the request headers ***content-type*** property as parameters.
 Returns a boolean (not a bot AND valid request: ***true*** | is bot OR invalid request: ***false***)
@@ -74,6 +74,27 @@ if(_wafjs.isBotCheck(req.headers['user-agent'])){
   res.end()
 }
 
+
+// usage example | extend bot signatures
+_wafjs.extendBotSigs(['newSig#1', 'newSig#2'])
+
+
+// usage example | remove signature
+_wafjs.removeBotSig('newSig#1')
+
+
+// usage example | request check
+if(_wafjs.reqCheck(req.method, req.headers['content-type'])){
+  res.statusCode = 403
+  res.end()
+}
+
+
+// usage example | waf checks
+if(_wafjs.wafChecks(req.headers['user-agent'], req.method, req.headers['content-type'])){
+  res.statusCode = 403
+  res.end()
+}
 ````
 
 ---
