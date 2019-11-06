@@ -15,7 +15,7 @@ if: os = windows
 env: nodelatest=latest
 
 node_js:
-- env(nodelatest)
-- 'lts/*'
+  - env(nodelatest)
+  - 'lts/*'
 
 after_success: npm run coverage
