@@ -5,9 +5,8 @@ os:
   - osx
   - windows
 
-
 node_js:
-  - node
+  - latest
   - 'lts/*'
 
 jobs:
